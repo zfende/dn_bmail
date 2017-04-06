@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block naslov %}Vreme{% endblock %}
+
+{% block vsebina %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <br>
+        <hr>
+        <h1 class="text-center" id="vreme">Vreme</h1>
+        <br>
+        <table class="col-lg-6 col-lg-offset-3 text-center">
+            <tr>
+                <th class ="text-center">
+                    <h2><u>Trenutni vremenski podatki so:</u></h2>
+                    <h3><strong>Mesto: </strong><em>{{ json_podatki.name }}</em></h3>
+                    <h3><strong>Stanje: </strong><em>{{ json_podatki.weather[0].description }}</em></h3>
+                    <h3><strong>Temperatura: </strong><em>{{ json_podatki.main.temp }} °C</em></h3>
+                    <h3><strong>Zračni tlak: </strong><em>{{ json_podatki.main.pressure }} hPa</em></h3>
+                    <h3><strong>Vlažnost: </strong><em>{{ json_podatki.main.humidity }} %</em></h3>
+                    <h3><strong>Jakost vetra: </strong><em>{{ json_podatki.wind.speed }} m/s</em></h3>
+                </th>
+                <th class="text-center">
+                    <img style="float: right"  src="/assets/img/weather.png" class="img-thumbnail" alt="vreme">
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

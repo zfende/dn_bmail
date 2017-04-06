@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block naslov %}Pošlji sporočilo{% endblock %}
+
+{% block vsebina %}
+<div class="row">
+    <div class="col-sm-12">
+        <br>
+        <hr>
+        <h1 class="text-center" id="poslji-sporocilo">Pošlji sporočilo</h1>
+    </div>
+</div>
+<br>
+<form method="post" action="/poslji">
+   <div class="col-md-4 col-md-offset-4" align="center">
+      <div class="form-group">
+        <label>Pošiljatelj:</label>
+        <input type="text" class="form-control" name="posiljatelj" readonly value="{{ user.email() }}">
+      </div>
+      <div class="form-group">
+        <label>Prejemnik</label>
+        <input type="email" class="form-control" name="prejemnik" placeholder="Vnesite e-mail prejemnika">
+      </div>
+      <div class="form-group">
+        <label>Sporočilo</label>
+        <textarea class="form-control" name="sporocilo" placeholder="Vnesite sporocilo" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Pošlji sporočilo</button>
+   </div>
+</form>
+{% endblock %}

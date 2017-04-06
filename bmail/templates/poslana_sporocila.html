@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block naslov %}Poslana sporočila{% endblock %}
+
+{% block vsebina %}
+<div class="row">
+    <div class="col-sm-12">
+        <br>
+        <hr>
+        <h1 class="text-center" id="poslana-sporocila">Poslana sporočila</h1>
+    </div>
+</div>
+{% for sporocilo in sporocila_poslana %}
+<div style="padding-left:20px;">
+    <h4>Poslano</h4>
+    <p>{{ sporocilo.nastanek.strftime('%d %B %Y ob %H:%M') }}</p>
+    <h4>Prejemnik</h4>
+    <p>{{ sporocilo.prejemnik }}</p>
+    <h4>Sporočilo</h4>
+    <p>{{ sporocilo.sporocilo }}</p>
+    <form action="/poslana/{{ sporocilo.key.id() }}/izbrisi" method="post">
+    <button type="submit" class="btn btn-danger">Izbriši</button>
+    </form>
+</div>
+<hr>
+</div>
+{% else %}
+<div>
+    <h4>Ni poslanih sporocil.</h4>
+</div>
+{% endfor %}
+{% endblock %}
